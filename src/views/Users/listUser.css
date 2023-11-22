@@ -1,0 +1,12 @@
+.listUserContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .UserItem{
+        border: 1px solid red;
+        display: inline-block;
+        width: 300px;
+        cursor: pointer;
+    }
+}
