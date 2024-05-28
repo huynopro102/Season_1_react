@@ -1,7 +1,7 @@
 import React from "react";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 class AddToDo extends React.Component {
 
     state = {
@@ -51,11 +51,13 @@ class AddToDo extends React.Component {
         });
     }
 
+
     render() {
         return (
             <div className="add-todo" >
                 <input type="text" className="btn-add" value={this.state.title} onChange={(event) => this.handleOnchangeTile(event)} />
                 <button type="button" onClick={(event) => this.handleAddToDo(event)} > add </button>
+              
             </div>
         )
     }

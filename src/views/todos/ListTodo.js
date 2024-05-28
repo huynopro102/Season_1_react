@@ -67,6 +67,7 @@ class ListTodo extends React.Component {
                     addNewTodo={this.addNewTodo}
                     listTodos={this.state.listTodos}
                 />
+                
                 <div className="list-todo-content">
                     {
                         listTodos && listTodos.length > 0 &&    
