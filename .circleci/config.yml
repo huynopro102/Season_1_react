@@ -1,10 +1,47 @@
 version: 2.1
 orbs:
   node: circleci/node@5
-
+  docker: circleci/docker@1.4.0
+jobs:
+  build-and-push:
+    environment:
+      DOCKER_IMAGE: image/ci_cd
+      DOCKER_TAG: latest
+    executor: docker/docker
+    steps:
+      - setup_remote_docker
+      - checkout
+      - docker/check:
+        docker-username: DOCKER_USER
+        docker-password: DOCKER_PASSWORD
+      - docker/build:
+          image: $DOCKER_IMAGE
+          tag: $DOCKER_TAG
+      - docker/push:
+          digest-path: /tmp/digest.txt
+          image: $DOCKER_IMAGE
+          tag: $DOCKER_TAG
+      - run:
+          command: |
+            echo "Digest is: $(</tmp/digest.txt)"
    
 workflows:
-  node-test:
-    jobs:
+  test-build-deploy: # this is just name , no important
+    jobs: # đây là các job 
+      # dưới đây là danh sách các obj chạy
       - node/test
+      - build-and-push:
+      # 1 chỉ build trên master
+      # 2 chỉ build khi đã test thành công node/test
+        requires:
+          - node/test
+        filters:
+          branches:
+            only:
+              - master
 
+
+
+
+# từ dong 20 trở lại 1 thì nó chỉ là các command prepare , từ dòng 21 trở xuống mới là chạy các lệnh trên
+# build and push là tên của các command prepare above
