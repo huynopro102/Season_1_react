@@ -28,7 +28,6 @@ class Nav extends React.Component {
         <NavLink activeClassName="active" onClick={this.handleClick} to="/about">about</NavLink>
         <NavLink activeClassName="active" onClick={this.handleClick} to="/user">user</NavLink>
         <NavLink activeClassName="active" onClick={this.handleClick} to="/hello">hello</NavLink>
-        <NavLnk activeClassName="active" onClick={this.handleClick} to="/hello">hello</NavLnk>
 
        
       </div>
