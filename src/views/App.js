@@ -33,7 +33,13 @@ function About() {
     </div>
   );
 }
-
+function Hello() {
+  return (
+    <div>
+      <h2>hello world</h2>
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -66,6 +72,9 @@ function App() {
              <DetailUser/>
             </Route>
 
+            <Route path="/hello">
+              <Hello/>
+            </Route>
 
           </Switch>
         </header>
